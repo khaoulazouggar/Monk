@@ -28,14 +28,16 @@ export default function Workflow() {
   const handleFile = function () {
     const content = this.result;
 
-    const base64Data = content ? content.replace(/^data:image\/\w+;base64,/, "") : "";
+    const base64Data = content
+      ? content.replace(/^data:image\/\w+;base64,/, "")
+      : "";
     const buffer = Buffer.from(base64Data, "base64");
     jimp.read(buffer, (err, rslt) => {
       if (err) {
         console.log(err);
       } else {
         setPicture([...picture, content]);
-        // window.location.href = "/workflow";
+        window.location.href = "/workflow";
         axios
           .post("http://localhost:3001/createImage", {
             content,
@@ -87,7 +89,9 @@ export default function Workflow() {
     <div className="workflow">
       <div className="workflow-content">
         <Steps current={current} onChange={handelChange}>
-          <Step title={<input className="step-inpt" placeholder= "Status 1"/>} />
+          <Step
+            title={<input className="step-inpt" placeholder="Status 1" />}
+          />
           <Step title="Status 2" />
           <Step title="Validated" />
           <Step title="Finished" />
@@ -115,7 +119,10 @@ export default function Workflow() {
               {picture?.map((p, i) => (
                 <div className="test" key={i}>
                   <img className="file-upload-image" src={p} alt={p} />
-                  <button className="state" onClick={() => handlechangestate(i)}>
+                  <button
+                    className="state"
+                    onClick={() => handlechangestate(i)}
+                  >
                     Next state
                   </button>
                 </div>
@@ -123,8 +130,15 @@ export default function Workflow() {
               {Img?.map((p, i) =>
                 p.status === 1 ? (
                   <div className="test" key={i}>
-                    <img className="file-upload-image" src={"http://localhost:3001/images/" + p.image} alt={p} />
-                    <button className="state" onClick={() => handlechangestate(i)}>
+                    <img
+                      className="file-upload-image"
+                      src={"http://localhost:3001/images/" + p.image}
+                      alt={p}
+                    />
+                    <button
+                      className="state"
+                      onClick={() => handlechangestate(i)}
+                    >
                       Next state
                     </button>
                   </div>
@@ -135,52 +149,84 @@ export default function Workflow() {
             </div>
           </div>
         ) : current === 1 ? (
-          Img.map((p, i) =>
-            p.status === 2 ? (
-              <div className="test" key={i}>
-                <img className="file-upload-image" src={"http://localhost:3001/images/" + p.image} alt={p} />
-                <button className="previous" onClick={() => handlepreviousState(i)}>
-                  Previous state
-                </button>
-                <button className="state" onClick={() => handlechangestate(i)}>
-                  Next state
-                </button>
-              </div>
-            ) : (
-              <div key={i}> </div>
-            )
-          )
+          <div className="upload-image">
+            {Img.map((p, i) =>
+              p.status === 2 ? (
+                <div className="test" key={i}>
+                  <img
+                    className="file-upload-image"
+                    src={"http://localhost:3001/images/" + p.image}
+                    alt={p}
+                  />
+                  <button
+                    className="previous"
+                    onClick={() => handlepreviousState(i)}
+                  >
+                    Previous state
+                  </button>
+                  <button
+                    className="state"
+                    onClick={() => handlechangestate(i)}
+                  >
+                    Next state
+                  </button>
+                </div>
+              ) : (
+                <div key={i}> </div>
+              )
+            )}
+          </div>
         ) : current === 2 ? (
-          Img.map((p, i) =>
-            p.status === 3 ? (
-              <div className="test" key={i}>
-                <img className="file-upload-image" src={"http://localhost:3001/images/" + p.image} alt={p} />
-                <button className="previous" onClick={() => handlepreviousState(i)}>
-                  Previous state
-                </button>
-                <button className="state" onClick={() => handlechangestate(i)}>
-                  Next state
-                </button>
-              </div>
-            ) : (
-              <div key={i}> </div>
-            )
-          )
-        ):current === 3 ? (
-          Img.map((p, i) =>
-            p.status === 4 ? (
-              <div className="test" key={i}>
-                <img className="file-upload-image" src={"http://localhost:3001/images/" + p.image} alt={p} />
-                 <button className="previous" onClick={() => handlepreviousState(i)}>
-                  Previous state
-                </button>
-              </div>
-            ) : (
-              <div key={i}> </div>
-            )
-          )
-        ):
-        (
+          <div className="upload-image">
+            {Img.map((p, i) =>
+              p.status === 3 ? (
+                <div className="test" key={i}>
+                  <img
+                    className="file-upload-image"
+                    src={"http://localhost:3001/images/" + p.image}
+                    alt={p}
+                  />
+                  <button
+                    className="previous"
+                    onClick={() => handlepreviousState(i)}
+                  >
+                    Previous state
+                  </button>
+                  <button
+                    className="state"
+                    onClick={() => handlechangestate(i)}
+                  >
+                    Next state
+                  </button>
+                </div>
+              ) : (
+                <div key={i}> </div>
+              )
+            )}
+          </div>
+        ) : current === 3 ? (
+          <div className="upload-image">
+            {Img.map((p, i) =>
+              p.status === 4 ? (
+                <div className="test" key={i}>
+                  <img
+                    className="file-upload-image"
+                    src={"http://localhost:3001/images/" + p.image}
+                    alt={p}
+                  />
+                  <button
+                    className="previous"
+                    onClick={() => handlepreviousState(i)}
+                  >
+                    Previous state
+                  </button>
+                </div>
+              ) : (
+                <div key={i}> </div>
+              )
+            )}
+          </div>
+        ) : (
           <div></div>
         )}
       </div>
