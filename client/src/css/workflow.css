@@ -1,0 +1,15 @@
+.workflow {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .workflow_content {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 50%;
+    width: 80%;
+  }
