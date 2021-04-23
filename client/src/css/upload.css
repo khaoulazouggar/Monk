@@ -1,0 +1,98 @@
+.upload {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 345px;
+  width: 100%;
+}
+
+.file-upload {
+  width: 90%;
+  margin: 40px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 65px;
+}
+
+.file-upload::-webkit-scrollbar {
+  display: none;
+}
+
+.drag-text {
+  text-align: center;
+  color: #0e4cea;
+}
+.drag-text h3 {
+  font-weight: 100;
+  color: #0e4cea;
+  padding-bottom: 60px;
+  text-align: center;
+}
+
+.image-upload-wrap {
+  border: 3px dashed #4d7cf3f7;
+  border-radius: 10px;
+  position: relative;
+  transition: all 0.8s;
+}
+
+.image-upload-wrap:hover {
+  background-color: #4d7cf3f7;
+  border: 3px dashed #ffffff;
+}
+
+.file-upload-input {
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+
+  opacity: 0;
+  cursor: pointer;
+}
+
+.file-upload-image {
+  max-width: 200px;
+
+  padding: 11px;
+  box-sizing: border-box;
+  background-size: contain;
+}
+
+.upload-image {
+  height: 400px;
+  overflow: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+.upload-image::-webkit-scrollbar {
+  display: none;
+}
+
+.state {
+  max-width: 165px;
+  color: #fff;
+  background: #3489da;
+  text-transform: uppercase;
+  border: none;
+  outline: none;
+  padding: 10px;
+  border-radius: 10px;
+  position: absolute;
+  top: 20px;
+  left: 15px;
+  opacity: 0;
+  cursor: pointer;
+  transition: all 1.8s;
+}
+
+.test {
+  position: relative;
+}
+
+.test:hover .state {
+  opacity: 1;
+}
