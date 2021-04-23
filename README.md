@@ -26,6 +26,14 @@ About 6 Hours .
 
 <hr>
 
+> # Back-end
+
+- Node.js
+- Express.js
+- MYSQL
+
+<hr>
+
 > ### How to run it ?
 
    1. cd client && npm install
