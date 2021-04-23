@@ -44,10 +44,8 @@
 
 .file-upload-input {
   position: absolute;
-
   width: 100%;
   height: 100%;
-
   opacity: 0;
   cursor: pointer;
 }
@@ -82,11 +80,28 @@
   padding: 10px;
   border-radius: 10px;
   position: absolute;
-  top: 20px;
+  top: 60px;
   left: 15px;
   opacity: 0;
   cursor: pointer;
   transition: all 1.8s;
+}
+
+.previous {
+  max-width: 165px;
+  color: #fff;
+  background: #cd4535;
+  text-transform: uppercase;
+  border: none;
+  outline: none;
+  padding: 10px;
+  border-radius: 10px;
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  opacity: 0;
+  cursor: pointer;
+  transition: all 1.1s;
 }
 
 .test {
@@ -94,5 +109,9 @@
 }
 
 .test:hover .state {
+  opacity: 1;
+}
+
+.test:hover .previous {
   opacity: 1;
 }
