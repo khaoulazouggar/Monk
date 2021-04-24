@@ -13,42 +13,18 @@ export default function Workflow() {
   const [Img, setImg] = useState([]);
   const { Step } = Steps;
 
+  useEffect(() => {
+    axios.get("http://localhost:3001/GetImages").then((res) => {
+      setImg(res.data);
+      // console.log(res);
+    });
+  }, []);
+
   const handelChange = (current) => {
     // console.log("onChange:", current);
     setCurrent(current);
   };
-
-  useEffect(() => {
-    axios.get("http://localhost:3001/GetImages").then((res) => {
-      setImg(res.data);
-      console.log(res);
-    });
-  }, []);
-
-  const handleFile = function () {
-    const content = this.result;
-
-    const base64Data = content
-      ? content.replace(/^data:image\/\w+;base64,/, "")
-      : "";
-    const buffer = Buffer.from(base64Data, "base64");
-    jimp.read(buffer, (err, rslt) => {
-      if (err) {
-        console.log(err);
-      } else {
-        setPicture([...picture, content]);
-        window.location.href = "/workflow";
-        axios
-          .post("http://localhost:3001/createImage", {
-            content,
-          })
-          .then((res) => {
-            // console.log(res);
-          });
-      }
-    });
-  };
-
+  
   const handlechangestate = (e) => {
     const id = Img[e].id;
     const status = Img[e].status;
@@ -76,6 +52,30 @@ export default function Workflow() {
       .then((res) => {
         // console.log(res);
       });
+  };
+
+  const handleFile = function () {
+    const content = this.result;
+
+    const base64Data = content
+      ? content.replace(/^data:image\/\w+;base64,/, "")
+      : "";
+    const buffer = Buffer.from(base64Data, "base64");
+    jimp.read(buffer, (err, rslt) => {
+      if (err) {
+        console.log(err);
+      } else {
+        setPicture([...picture, content]);
+        axios
+          .post("http://localhost:3001/createImage", {
+            content,
+          })
+          .then((res) => {
+            // console.log(res);
+            window.location.href = "/workflow";
+          });
+      }
+    });
   };
 
   const onDrop = (e, file) => {

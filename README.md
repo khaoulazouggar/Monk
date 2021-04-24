@@ -14,14 +14,13 @@ the images submitted to it.
 
 > # Completion Time
 
-About 6 Hours .
+About 6 Hours.
 
 <hr>
 
 > # Front-end
 
 - React.js (+hooks)
-- Material-ui
 - ant Design
 
 <hr>
@@ -49,3 +48,34 @@ About 6 Hours .
    6. Enjoy!
 
 <hr>
+
+> # Screenshots
+
+
+```
+Home
+```
+
+![Home](./preview/home.png)
+
+```
+Drag And Drop
+```
+
+![Drag And Drop](./preview/dragAndDrop.png)
+
+```
+Next Status
+```
+
+![Next Status](./preview/next.png)
+
+```
+Previous Status
+```
+
+![Previous Status](./preview/previous.png)
+
+
+<hr>
+
